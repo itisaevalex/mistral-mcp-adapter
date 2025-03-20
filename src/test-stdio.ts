@@ -4,17 +4,26 @@ import * as path from 'path';
 import * as fs from 'fs/promises';
 
 async function testStdio() {
-    // Create a simple server script that just prints to stdout
+    // Create a simple server script that outputs valid JSON-RPC formatted messages
     const serverScript = `
-        console.log("Hello from the server!");
-        process.exit(0); // Exit immediately after printing
+        // Output a valid JSON-RPC message
+        console.log(JSON.stringify({
+            jsonrpc: '2.0',
+            id: '1',
+            result: {
+                message: 'Hello from the MCP server!'
+            }
+        }));
+        
+        // Wait a moment before exiting to ensure the message is sent
+        setTimeout(() => process.exit(0), 100);
     `;
 
     // Write the server to the build directory
     await fs.writeFile(path.join(process.cwd(), 'build/test-stdio-server.js'), serverScript);
 
     const transport = new StdioClientTransport({
-        command: "node", // Use node executable (adjust if needed)
+        command: "node",
         args: [path.join(process.cwd(), 'build/test-stdio-server.js')],
     });
 
@@ -32,9 +41,8 @@ async function testStdio() {
     };
 
     try {
-        await transport.start(); // Use start() instead of connect()
+        await transport.start();
         console.log("Stdio transport started.");
-        // No need to send anything, the server script prints immediately
     } catch (error) {
         console.error("Error starting transport:", error);
     }
