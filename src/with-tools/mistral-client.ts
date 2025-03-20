@@ -1,6 +1,6 @@
 // src/with-tools/mistral-client.ts
 import axios from 'axios';
-import { Config } from './config';
+import { Config } from './config.js';
 
 export interface Message {
     role: 'system' | 'user' | 'assistant' | 'tool';

@@ -1,7 +1,7 @@
 // src/with-tools/tool-agent.ts
-import { MistralClient, Message, ToolCall, MistralTool } from './mistral-client';
-import { ToolManager } from './tool-manager';
-import { Config } from './config';
+import { MistralClient, Message, ToolCall, MistralTool } from './mistral-client.js';
+import { ToolManager } from './tool-manager.js';
+import { Config } from './config.js';
 
 export class ToolAgent {
     private client: MistralClient;

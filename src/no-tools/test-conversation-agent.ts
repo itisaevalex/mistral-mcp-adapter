@@ -1,6 +1,6 @@
 // src/test-conversation-agent.ts
-import { loadConfig } from './config';
-import { ConversationAgent } from './conversation-agent';
+import { loadConfig } from './config.js';
+import { ConversationAgent } from './conversation-agent.js';
 
 async function testConversationAgent() {
   try {

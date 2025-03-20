@@ -1,6 +1,6 @@
 // src/test-mistral.ts
-import { loadConfig } from './config';
-import { MistralClient, Message } from './mistral-client';
+import { loadConfig } from './config.js';
+import { Message, MistralClient } from './mistral-client.js';
 
 async function testMistralAPI() {
   try {

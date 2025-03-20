@@ -1,6 +1,7 @@
 // src/conversation-agent.ts
-import { MistralClient, Message } from './mistral-client';
-import { Config } from './config';
+import { MistralClient } from './mistral-client.js';
+import { Message } from './mistral-client.js';
+import { Config } from './config.js';
 
 export class ConversationAgent {
   private client: MistralClient;

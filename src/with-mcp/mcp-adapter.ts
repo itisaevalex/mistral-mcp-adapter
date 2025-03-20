@@ -1,10 +1,10 @@
 // src/with-mcp/mcp-adapter.ts
-import { ToolManager } from './tool-manager';
-import { MistralClient, Message } from './mistral-client';
-import { Config } from './config';
+import { ToolManager } from './tool-manager.js';
+import { MistralClient, Message } from './mistral-client.js';
+import { Config } from './config.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js'; // Import the higher-level Client
-import { MistralTool } from './mcp-types';
+import { MistralTool } from './mcp-types.js';
 
 // Define the expected structure of toolResult
 interface ToolResult {

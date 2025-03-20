@@ -1,7 +1,7 @@
 // src/with-mcp/mistral-client.ts
 import axios from 'axios';
-import { Config } from './config';
-import { MistralTool } from './mcp-types'; // Import MistralTool
+import { Config } from './config.js';
+import { MistralTool } from './mcp-types.js'; // Import MistralTool
 
 export interface Message {
     role: 'system' | 'user' | 'assistant' | 'tool';

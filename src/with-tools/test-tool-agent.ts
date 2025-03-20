@@ -1,7 +1,7 @@
 // src/with-tools/test-tool-agent.ts
-import { loadConfig } from './config';
-import { ToolAgent } from './tool-agent';
-import { ToolManager } from './tool-manager';
+import { loadConfig } from './config.js';
+import { ToolAgent } from './tool-agent.js';
+import { ToolManager } from './tool-manager.js';
 
 async function testToolAgent() {
   try {

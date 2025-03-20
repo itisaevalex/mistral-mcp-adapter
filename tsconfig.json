@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
-    "module": "NodeNext", // Set to 'NodeNext' to match 'moduleResolution'
-    "target": "es2017", // or higher
-    "outDir": "build",  // Output directory for compiled files
+    "module": "NodeNext",
+    "target": "es2017",
+    "outDir": "build",
     "rootDir": "src",
-    "moduleResolution": "NodeNext",    
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "allowImportingTsExtensions": false,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*"

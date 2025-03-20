@@ -1,5 +1,5 @@
 // src/with-tools/tool-manager.ts
-import { MistralTool } from './mcp-types'; // Import from mcp-types
+import { MistralTool } from './mcp-types.js'; // Import from mcp-types
 
 export interface Tool {
   name: string;

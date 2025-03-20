@@ -1,5 +1,5 @@
 // src/with-tools/tool-manager.ts
-import { MistralTool } from './mistral-client'; // Import MistralTool
+import { MistralTool } from './mistral-client.js'; // Add .js extension
 
 export interface Tool {
   name: string;

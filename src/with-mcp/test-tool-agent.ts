@@ -1,7 +1,8 @@
 // src/with-mcp/test-tool-agent.ts
-import { loadConfig } from './config';
-import { McpAdapter } from './mcp-adapter'; // Import McpAdapter
-import { ToolManager } from './tool-manager';
+import { loadConfig } from './config.js';
+import { McpAdapter } from './mcp-adapter.js'; // Import McpAdapter
+import { ToolManager } from './tool-manager.js';
+import { MistralClient } from './mistral-client.js'; // Add .js extension
 
 async function testMcpAgent() {
     try {
