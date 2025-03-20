@@ -1,32 +1,37 @@
-# Mistral MCP Adapter
+# Mistral MCP Client
 
-A Model Context Protocol (MCP) adapter for Mistral AI models, enabling seamless integration between Mistral's powerful language models and applications that support the MCP standard, such as Claude Desktop.
+A TypeScript client that enables Mistral AI models to use tools provided by Model Context Protocol (MCP) servers. This project allows you to connect your Mistral applications to external tools and data sources through the standardized MCP protocol.
 
 ## Overview
 
-This adapter allows you to use Mistral AI models within Claude Desktop or any other MCP-compatible application. It translates between the Model Context Protocol and Mistral's API, maintaining conversation context and providing a smooth experience.
+This client acts as a bridge between Mistral AI models and MCP servers, allowing the models to use tools provided by these servers. The client:
+
+1. Connects to an MCP server
+2. Discovers available tools
+3. Presents these tools to Mistral models
+4. Handles tool execution when the model requests it
 
 ## Features
 
-- 🔄 Protocol translation between MCP and Mistral AI API
-- 💬 Conversation history management
-- 🎛️ Temperature and parameter control
-- 🧠 Compatible with multiple Mistral models
-- 🔌 Easy integration with Claude Desktop
+- 🔌 Connect to any MCP server
+- 🧰 Use tools from MCP servers with Mistral AI models
+- 💬 Interactive conversation support with tool usage
+- 🔄 Conversation history management
+- 🛠️ Extensible tool manager
 
 ## Prerequisites
 
 - Node.js (v14 or higher)
 - npm or yarn
 - Mistral API key
-- Claude Desktop (for full integration)
+- An MCP server to connect to (such as `mcp-server-sqlite`)
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/mistral-mcp-adapter.git
-cd mistral-mcp-adapter
+git clone https://github.com/yourusername/mistral-mcp-client.git
+cd mistral-mcp-client
 ```
 
 2. Install dependencies:
@@ -37,7 +42,9 @@ npm install
 3. Create a `.env` file in the project root and add your Mistral API key:
 ```
 MISTRAL_API_KEY=your_mistral_api_key_here
-MISTRAL_MODEL=mistral-medium
+MISTRAL_MODEL=mistral-large
+MCP_SERVER_COMMAND=path/to/your/mcp-server
+MCP_SERVER_ARGS=--arg1 value1 --arg2 value2
 ```
 
 4. Build the project:
@@ -47,88 +54,37 @@ npm run build
 
 ## Usage
 
-### Running the Adapter
+### Running the Client
 
-Start the adapter:
+Start the client:
 
 ```bash
 npm start
 ```
 
-### Configuration with Claude Desktop
+This will:
+1. Connect to the specified MCP server
+2. Register available tools
+3. Start an interactive prompt where you can chat with Mistral
 
-1. Edit your Claude Desktop configuration file (typically at `~/.claude-desktop/config.json`):
+### Interactive Conversation
 
-```json
-{
-  "mcpServers": {
-    "mistral-mcp": {
-      "command": "node",
-      "args": ["/absolute/path/to/mistral-mcp-adapter/dist/index.js"]
-    }
-  }
-}
-```
-
-2. Restart Claude Desktop to load the new configuration.
-
-3. Use the adapter in Claude by typing:
+Once the client is running, you can interact with it through the command line:
 
 ```
-@mistral-mcp.chat What is the capital of France?
+Enter your prompt: What is the current weather in New York?
 ```
 
-You can also specify conversation context:
+If the MCP server provides weather tools, Mistral will use them to answer your question.
 
-```
-@mistral-mcp.chat And what's its population?
-conversation_id=france-chat
-```
+## Architecture
 
-### Testing with the Test Client
+The project consists of several key components:
 
-A test client is included for direct testing:
-
-```bash
-npx ts-node test-client.ts
-```
-
-This provides an interactive way to test the adapter without Claude Desktop.
-
-## Project Structure
-
-```
-mistral-mcp-adapter/
-├── src/
-│   ├── config.ts            # Configuration management
-│   ├── mistral-client.ts    # Mistral API client
-│   ├── mcp-adapter.ts       # MCP server implementation
-│   └── index.ts             # Entry point
-├── test-client.ts           # Interactive test client
-├── tsconfig.json            # TypeScript configuration
-├── package.json             # Dependencies and scripts
-└── .env                     # Environment variables (not committed)
-```
-
-## Development
-
-### Available Scripts
-
-- `npm run build` - Build the TypeScript code
-- `npm start` - Start the adapter
-- `npm run dev` - Start with auto-reloading for development
-
-### Adding New Tools
-
-The current implementation includes a basic chat tool. To add more tools, modify the `ListToolsRequestSchema` handler in `mcp-adapter.ts`.
-
-## Future Enhancements
-
-Planned improvements for this project:
-- Support for streaming responses
-- Model selection tool
-- Code generation specialized tool
-- Web interface for testing
+- **MCP Client**: Connects to MCP servers and interfaces with their tools
+- **Conversation Agent**: Manages the conversation with Mistral and handles tool execution
+- **Tool Manager**: Registers and manages tools from MCP servers
+- **Mistral Client**: Interfaces with the Mistral API
 
 ## Contributing
 

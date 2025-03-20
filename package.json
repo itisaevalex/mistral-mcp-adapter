@@ -1,27 +1,30 @@
 {
-  "name": "mistral-mcp-adapter",
+  "name": "mistral-test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test:no-tools": "node build/no-tools/test-conversation-agent.js",
+    "test:with-tools": "node build/with-tools/test-tool-agent.js",
+    "test:with-mcp": "node build/with-mcp/test-tool-agent.js",
+    "start:cli": "node build/no-tools/cli-chat.js",
+    "start:mcp-server": "ts-node src/with-mcp/tools/mcp-server.ts",
+    "test": "npm run test:no-tools && npm run test:with-tools && npm run test:with-mcp",
+    "test:stdio": "node build/test-stdio.js"
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
-    "axios": "^1.8.3",
-    "dotenv": "^16.4.7",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
-  },
-  "devDependencies": {
-    "@types/node": "^22.13.10",
-    "nodemon": "^3.1.9"
-  },
-  "scripts": {
-    "build": "tsc",
-    "start": "ts-node src/index.ts",
-    "serve": "node dist/index.js"
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "zod": "^3.22.4"
   }
 }
-
