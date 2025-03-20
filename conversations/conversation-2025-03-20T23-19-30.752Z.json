@@ -1,0 +1,10 @@
+[
+  {
+    "role": "user",
+    "content": "Hello, tell me a bit about yourself."
+  },
+  {
+    "role": "assistant",
+    "content": "Hello! I'm a language model trained by the Mistral AI team."
+  }
+]

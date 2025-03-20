@@ -1,0 +1,54 @@
+[
+  {
+    "role": "user",
+    "content": "Hello, tell me a bit about yourself."
+  },
+  {
+    "role": "assistant",
+    "content": "Hello! I'm a language model trained by the Mistral AI team."
+  },
+  {
+    "role": "user",
+    "content": "Do you have tools available to you?"
+  },
+  {
+    "role": "assistant",
+    "content": "Yes, I have access to a few tools that can help me with various tasks. For example, I can provide weather information, perform calculations, and more."
+  },
+  {
+    "role": "user",
+    "content": "Woah, can you even calculate 100*10000?"
+  },
+  {
+    "role": "assistant",
+    "content": "",
+    "tool_calls": [
+      {
+        "id": "IetrNfolX",
+        "function": {
+          "name": "calculate",
+          "arguments": "{\"expression\": \"100*10000\"}"
+        },
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "tool_call_id": "IetrNfolX",
+    "name": "calculate",
+    "content": "The result of 100*10000 is 1000000"
+  },
+  {
+    "role": "assistant",
+    "content": "The result of 100*10000 is 1000000."
+  },
+  {
+    "role": "user",
+    "content": "Alright, is there a way to exit this application?"
+  },
+  {
+    "role": "assistant",
+    "content": "Yes, you can exit the application by typing \"exit\" or \"quit\"."
+  }
+]

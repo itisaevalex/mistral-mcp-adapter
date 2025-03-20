@@ -1,0 +1,19 @@
+{
+    "servers": {
+      "weather": {
+        "type": "stdio",
+        "name": "WeatherServer",
+        "command": "node",
+        "args": ["build/with-universal-mcp/tools/weather-server.js"],
+        "description": "Weather information service"
+      },
+      "math": {
+        "type": "stdio",
+        "name": "MathServer",
+        "command": "node",
+        "args": ["build/with-universal-mcp/tools/math-server.js"],
+        "description": "Mathematical calculation service"
+      }
+    },
+    "defaultServer": "weather"
+  }

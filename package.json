@@ -1,21 +1,30 @@
 {
-  "name": "mistral-test",
+  "name": "mistral-mcp-adapter",
   "version": "1.0.0",
-  "description": "",
+  "description": "A universal adapter for connecting Mistral AI to any MCP server",
   "main": "build/index.js",
   "scripts": {
     "build": "tsc",
     "test:no-tools": "node build/no-tools/test-conversation-agent.js",
     "test:with-tools": "node build/with-tools/test-tool-agent.js",
     "test:with-mcp": "node build/with-mcp/test-tool-agent.js",
+    "test:universal-mcp": "node build/with-universal-mcp/test-universal-mcp.js",
     "start:cli": "node build/no-tools/cli-chat.js",
     "start:mcp-server": "ts-node src/with-mcp/tools/mcp-server.ts",
+    "chat": "node build/with-universal-mcp/cli.js",
     "test": "npm run test:no-tools && npm run test:with-tools && npm run test:with-mcp",
     "test:stdio": "node build/test-stdio.js"
-    },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  },
+  "keywords": [
+    "mistral",
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "llm",
+    "tools"
+  ],
+  "author": "Alexander Isaev",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.10.0",
     "ts-node": "^10.9.2",
