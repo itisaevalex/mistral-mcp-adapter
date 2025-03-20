@@ -6,7 +6,7 @@ import {
   ErrorCode,
   ListToolsRequestSchema,
   McpError
-} from "@modelcontextprotocol/sdk/types.js";
+} from "@modelcontextprotocol/sdk/types";
 import { Config } from './config';
 import { MistralClient, Message } from './mistral-client';
 
@@ -25,12 +25,8 @@ export class MistralMcpAdapter {
       name: "mistral-mcp",
       version: "1.0.0",
       description: "Simple MCP adapter for Mistral AI"
-    }, {
-      capabilities: {
-        tools: {}
-      }
     });
-
+    
     // Register handlers
     this.setupHandlers();
   }
@@ -116,15 +112,10 @@ export class MistralMcpAdapter {
             
             console.error(`Response received from Mistral`);
             
-            // Return formatted response
+            // Return properly formatted response for MCP
             return {
-              content: [
-                {
-                  type: "text",
-                  text: response.content
-                }
-              ],
-              metadata: {
+              result: {
+                content: response.content,
                 model: response.model,
                 usage: response.usage,
                 conversation_id: conversationId
